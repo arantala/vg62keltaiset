@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .torneopal_widget .scoretable {  
+                width:400px;  
+                font-family:Ubuntu,Arial;
+                border:1px solid #aac;
+            }
+            .torneopal_widget .scoretable th{
+                text-align:center;
+                background:#aac;
+                color:#fff;
+                padding:4px 2px;
+            }
+            .torneopal_widget .scoretable th.team,
+            .torneopal_widget .scoretable td.team
+            {
+                text-align:left;
+            }
+
+            .torneopal_widget .scoretable td{
+                text-align:center;
+                background:#fff;
+                padding:4px 2px;
+            }
+            .torneopal_widget .scoretable tr:nth-child(even) td{
+                background:#eee;
+            }
+            .torneopal_widget #updated{
+                display:none;
+            }
+
+            html {
+                display: table;
+                margin: auto;
+                text-align: center;
+                background-color: black;
+            }
+            body {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            p>span {
+                text-decoration: underline;
+                color: yellow;
+                cursor: pointer;
+            }
+            .page {
+                text-align: center;
+            }
+            h1 {
+                color: yellow;
+            }
+            div {
+                background-color: white;
+            }
+        </style>
+        <h1>VG-62 Keltaiset</h1>
+        <p>
+          <span onclick="show('tulevat');">Tulevat</span>
+          <span onclick="show('pelatut');">Pelatut</span>
+          <span onclick="show('tilastot');">Tilastot</span>
+          <span onclick="show('sarjataulukko');">Sarjataulukko</span>
+        </p>
+    </head>
+    <body>
+        <div id="tulevat" class="page">
+            <script src='https://spl.torneopal.fi/torneopal/ajax/[torneopal:team_fixture:team=35160052%26amp;key=KFW8NQEE3B]'></script>
+        </div>
+        <div id="pelatut" class="page" style="display:none">
+            <script src='https://spl.torneopal.fi/torneopal/ajax/[torneopal:team_results:team=35160052%26amp;key=KFW8NQEE3B]'></script>
+        </div>
+        <div id="tilastot" class="page" style="display:none">
+            <script src='https://spl.torneopal.fi/torneopal/ajax/[torneopal:team_players:team=35160052%26amp;key=KFW8NQEE3B]'></script>
+        </div>
+        <div id="sarjataulukko" class="page" style="display:none">
+            <script src='https://spl.torneopal.fi/torneopal/ajax/[torneopal:scoretable:competition=lanjp24%26amp;class=P82%26amp;group=1%26amp;key=KFW8NQEE3B]'></script>
+        </div>
+    </body>
+  <script>
+    function show(elementID) {
+      const ele = document.getElementById(elementID);
+      if (!ele) {
+        alert("no such element");
+        return;
+      }
+      const pages = document.getElementsByClassName('page');
+      for (let i = 0; i < pages.length; i++) {
+        pages[i].style.display = 'none';
+      }
+      ele.style.display = 'block';
+    }
+  </script>
+</html>
